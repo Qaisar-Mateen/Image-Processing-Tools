@@ -30,3 +30,11 @@ def event_handler():
                 change = True
             tab = tabs.get()
             event = True
+            
+        if wtf:
+            wtf = False
+            if os.path.exists('equalized.png'):
+                    img1 = ctk.CTkImage(Image.open('equalized.png'), size=image_size)
+                    ctk.CTkLabel(r_imgFr, image=img1, text='').grid(column=0, row=0, padx=10, pady=10)
+            
+
