@@ -30,38 +30,38 @@ def event_handler():
                 change = True
             tab = tabs.get()
             event = True
-            
+
         if wtf:
             wtf = False
             if os.path.exists('equalized.png'):
                     img1 = ctk.CTkImage(Image.open('equalized.png'), size=image_size)
                     ctk.CTkLabel(r_imgFr, image=img1, text='').grid(column=0, row=0, padx=10, pady=10)
-                   if tabs.get() == 'Specified Equalization':
-        
-        if event:
-            event = False
-
-            for arrow in upperFr.winfo_children():
-                if arrow.grid_info()['column'] == 3 and arrow.grid_info()['row'] == 0:
-                    arrow.destroy()
             
-            upload_btn.destroy()
+        if tabs.get() == 'Specified Equalization':
+            if event:
+                event = False
+
+                for arrow in upperFr.winfo_children():
+                    if arrow.grid_info()['column'] == 3 and arrow.grid_info()['row'] == 0:
+                        arrow.destroy()
+            
+                upload_btn.destroy()
                 
-            for child in l_imgFr.winfo_children():
-                child.destroy()
-            
-            l_imgFr.destroy() 
-            r_imgFr = ctk.CTkFrame(upperFr, corner_radius=20, fg_color="#2B2B2B")
-            r_imgFr.grid(row=0, column=5, padx=15, pady=15, sticky='snew')
+                for child in l_imgFr.winfo_children():
+                    child.destroy()
 
-            if os.path.exists('equalized.png'):
-                img1 = ctk.CTkImage(Image.open('equalized.png'), size=image_size)
-            else:
-                img1 = ctk.CTkImage(Image.open('no image.png'), size=image_size)
-            
-            ctk.CTkLabel(r_imgFr, text='Processed Image').grid(column=0, row=1, padx=10, pady=(0,10))
+                l_imgFr.destroy() 
+                r_imgFr = ctk.CTkFrame(upperFr, corner_radius=20, fg_color="#2B2B2B")
+                r_imgFr.grid(row=0, column=5, padx=15, pady=15, sticky='snew')
 
-            ctk.CTkLabel(r_imgFr, image=img1, text='').grid(column=0, row=0, padx=10, pady=10)
+                if os.path.exists('equalized.png'):
+                    img1 = ctk.CTkImage(Image.open('equalized.png'), size=image_size)
+                else:
+                    img1 = ctk.CTkImage(Image.open('no image.png'), size=image_size)
+
+                ctk.CTkLabel(r_imgFr, text='Processed Image').grid(column=0, row=1, padx=10, pady=(0,10))
+
+                ctk.CTkLabel(r_imgFr, image=img1, text='').grid(column=0, row=0, padx=10, pady=10)
 
         else:
             if event:
