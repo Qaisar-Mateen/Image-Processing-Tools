@@ -63,3 +63,8 @@ def event_handler():
 
             ctk.CTkLabel(r_imgFr, image=img1, text='').grid(column=0, row=0, padx=10, pady=10)
 
+        else:
+            if event:
+                event = False
+                if change:
+                    uploaded = True if gray_img is not None else False 
