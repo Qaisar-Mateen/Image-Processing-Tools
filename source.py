@@ -49,3 +49,12 @@ def event_handler():
                 
             for child in l_imgFr.winfo_children():
                 child.destroy()
+            
+            l_imgFr.destroy() 
+            r_imgFr = ctk.CTkFrame(upperFr, corner_radius=20, fg_color="#2B2B2B")
+            r_imgFr.grid(row=0, column=5, padx=15, pady=15, sticky='snew')
+
+            if os.path.exists('equalized.png'):
+                img1 = ctk.CTkImage(Image.open('equalized.png'), size=image_size)
+            else:
+                img1 = ctk.CTkImage(Image.open('no image.png'), size=image_size)
