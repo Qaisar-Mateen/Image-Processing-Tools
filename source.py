@@ -17,3 +17,16 @@ k1_val,k2_val,process_btn,upload_btn,winSize,imgref,wtf = 0.5,0.5,None,None,None
 upperFr,mapping,fr1,k,r,arrow,app,gray_img,r_imgFr,l_imgFr,tabs,Min,Max = None,None,None,None,None,None,None,None,None,None,None,None,None
 image_size = (339, 190)
 hov, nor = '#AF4BD6', '#9130BD'
+
+
+def event_handler():
+    global app, tabs, gray_img, l_imgFr, upperFr, wtf
+    event = False
+    tab = tabs.get()
+    change = False
+    while app:
+        if tab != tabs.get() and wtf == False:
+            if tab == 'Specified Equalization':
+                change = True
+            tab = tabs.get()
+            event = True
