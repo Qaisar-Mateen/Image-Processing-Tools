@@ -36,5 +36,16 @@ def event_handler():
             if os.path.exists('equalized.png'):
                     img1 = ctk.CTkImage(Image.open('equalized.png'), size=image_size)
                     ctk.CTkLabel(r_imgFr, image=img1, text='').grid(column=0, row=0, padx=10, pady=10)
-            
+                   if tabs.get() == 'Specified Equalization':
+        
+        if event:
+            event = False
 
+            for arrow in upperFr.winfo_children():
+                if arrow.grid_info()['column'] == 3 and arrow.grid_info()['row'] == 0:
+                    arrow.destroy()
+            
+            upload_btn.destroy()
+                
+            for child in l_imgFr.winfo_children():
+                child.destroy()
