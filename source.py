@@ -58,3 +58,8 @@ def event_handler():
                 img1 = ctk.CTkImage(Image.open('equalized.png'), size=image_size)
             else:
                 img1 = ctk.CTkImage(Image.open('no image.png'), size=image_size)
+            
+            ctk.CTkLabel(r_imgFr, text='Processed Image').grid(column=0, row=1, padx=10, pady=(0,10))
+
+            ctk.CTkLabel(r_imgFr, image=img1, text='').grid(column=0, row=0, padx=10, pady=10)
+
