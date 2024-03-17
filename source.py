@@ -206,3 +206,5 @@ def equation_mapping():
             child.destroy()
     ctk.CTkLabel(r_imgFr, image=pro_img, text='').grid(column=0, row=0, padx=10,pady=10)
 
+    create_graph(tabs.tab('Linear Mapping'), 3, 0, img=mapped_img, txt='Mapped Image Histogram')
+
