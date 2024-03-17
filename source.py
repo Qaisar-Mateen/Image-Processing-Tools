@@ -188,4 +188,8 @@ def histogram_processing():
             if info['row'] == 0:
                 child.destroy()
         ctk.CTkLabel(r_imgFr, image=pro_img, text='').grid(column=0, row=0, padx=10,pady=10)
+    
+    else:
+        messagebox.showerror('Invalid Range', 'Range is neither shrinking nor stretching')
+        return
 
