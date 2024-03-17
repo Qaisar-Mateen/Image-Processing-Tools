@@ -202,4 +202,7 @@ def equation_mapping():
     pro_img = ctk.CTkImage(Image.open('mapped.png'), size=image_size)
     for child in r_imgFr.winfo_children():
         info = child.grid_info()
-  
+        if info['row'] == 0:
+            child.destroy()
+    ctk.CTkLabel(r_imgFr, image=pro_img, text='').grid(column=0, row=0, padx=10,pady=10)
+
