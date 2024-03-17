@@ -172,3 +172,12 @@ def histogram_processing():
             info = child.grid_info()
             if info['row'] == 0:
                 child.destroy()
+        ctk.CTkLabel(r_imgFr, image=pro_img, text='').grid(column=0, row=0, padx=10,pady=10)
+
+        create_graph(tabs.tab('Shrink & Stretch'), 3, 0, img=stretched_img, txt='Stretched Histogram')
+
+    elif min >= I_min and max <= I_max: # shrinking
+
+        shrinked_img = np.round(((max - min) / (I_max - I_min))* (gray_img - I_min) + min)
+        shrinked_img = np.clip(shrinked_img, 0, 255).astype('uint8')
+        cv2.imwrite('shrinked.png', shrinked_img)
