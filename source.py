@@ -77,3 +77,19 @@ def event_handler():
 
         time.sleep(0.15)
 
+
+def select_image(col=0, row=0, imgfr=None):
+    global gray_img, fr1, tabs, l_imgFr, imgref
+    if imgfr is None:
+        imgfr = l_imgFr
+    file_path = filedialog.askopenfilename(filetypes=[("Image files", "*.jpg *.png *.jpeg")])
+    colored_img = cv2.imread(file_path)
+    if col == 1:
+        imgref = cv2.cvtColor(colored_img, cv2.COLOR_BGR2GRAY)
+        cv2.imwrite('ref.png', imgref)
+        img1 = ctk.CTkImage(Image.open('ref.png'), size=image_size)
+    
+    else:
+        gray_img = cv2.cvtColor(colored_img, cv2.COLOR_BGR2GRAY)
+        cv2.imwrite('gray.png', gray_img)
+        img1 = ctk.CTkImage(Image.open('gray.png'), size=image_size)
