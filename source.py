@@ -181,3 +181,11 @@ def histogram_processing():
         shrinked_img = np.round(((max - min) / (I_max - I_min))* (gray_img - I_min) + min)
         shrinked_img = np.clip(shrinked_img, 0, 255).astype('uint8')
         cv2.imwrite('shrinked.png', shrinked_img)
+
+        pro_img = ctk.CTkImage(Image.open('shrinked.png'), size=image_size)
+        for child in r_imgFr.winfo_children():
+            info = child.grid_info()
+            if info['row'] == 0:
+                child.destroy()
+        ctk.CTkLabel(r_imgFr, image=pro_img, text='').grid(column=0, row=0, padx=10,pady=10)
+
