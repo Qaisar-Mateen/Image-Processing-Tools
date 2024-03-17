@@ -93,3 +93,20 @@ def select_image(col=0, row=0, imgfr=None):
         gray_img = cv2.cvtColor(colored_img, cv2.COLOR_BGR2GRAY)
         cv2.imwrite('gray.png', gray_img)
         img1 = ctk.CTkImage(Image.open('gray.png'), size=image_size)
+     
+    # remove previous image
+    for child in imgfr.winfo_children():
+        info = child.grid_info()
+        if info['row'] == row:
+            child.destroy()
+
+    ctk.CTkLabel(imgfr, image=img1, text='').grid(column=col, row=row, padx=10,pady=10)
+
+    create_graph(tabs.tab('Shrink & Stretch'), 1, 0, img=gray_img)
+    create_graph(tabs.tab('Shrink & Stretch'), 3, 0, txt='Processed Histogram')
+
+    create_graph(tabs.tab(' Image Negative'), 1, 1, img=gray_img)
+    create_graph(tabs.tab(' Image Negative'), 3, 1, txt='Negative Image Histogram')
+
+    create_graph(tabs.tab('Linear Mapping'), 1, 0, img=gray_img)
+    create_graph(tabs.tab('Linear Mapping'), 3, 0, txt='Linear Mapped Histogram')
