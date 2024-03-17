@@ -20,7 +20,7 @@ hov, nor = '#AF4BD6', '#9130BD'
 
 
 def event_handler():
-    global app, tabs, gray_img, l_imgFr, upperFr, wtf
+    global app, tabs, gray_img, l_imgFr, upperFr, wtf, pro_img, r_imgFr
     event = False
     tab = tabs.get()
     change = False
@@ -34,8 +34,8 @@ def event_handler():
         if wtf:
             wtf = False
             if os.path.exists('equalized.png'):
-                    img1 = ctk.CTkImage(Image.open('equalized.png'), size=image_size)
-                    ctk.CTkLabel(r_imgFr, image=img1, text='').grid(column=0, row=0, padx=10, pady=10)
+                    pro_img = ctk.CTkImage(Image.open('equalized.png'), size=image_size)
+                    ctk.CTkLabel(r_imgFr, image=pro_img, text='').grid(column=0, row=0, padx=10, pady=10)
             
         if tabs.get() == 'Specified Equalization':
             if event:
@@ -50,19 +50,19 @@ def event_handler():
                 for child in l_imgFr.winfo_children():
                     child.destroy()
 
-                l_imgFr.destroy() 
+                l_imgFr.destroy()
+                r_imgFr.destroy() 
                 r_imgFr = ctk.CTkFrame(upperFr, corner_radius=20, fg_color="#2B2B2B")
                 r_imgFr.grid(row=0, column=5, padx=15, pady=15, sticky='snew')
-
-                if os.path.exists('equalized.png'):
-                    img1 = ctk.CTkImage(Image.open('equalized.png'), size=image_size)
+    
+                if pro_img is not None:
+                    ctk.CTkLabel(r_imgFr, image=pro_img, text='').grid(column=0, row=0, padx=10, pady=10)
                 else:
                     img1 = ctk.CTkImage(Image.open('no image.png'), size=image_size)
+                    ctk.CTkLabel(r_imgFr, image=img1, text='').grid(column=0, row=0, padx=10, pady=10)
 
                 ctk.CTkLabel(r_imgFr, text='Processed Image').grid(column=0, row=1, padx=10, pady=(0,10))
-
-                ctk.CTkLabel(r_imgFr, image=img1, text='').grid(column=0, row=0, padx=10, pady=10)
-
+                
         else:
             if event:
                 event = False
@@ -76,3 +76,4 @@ def event_handler():
                     change = False
 
         time.sleep(0.15)
+
