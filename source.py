@@ -147,3 +147,16 @@ def negative_image():
     ctk.CTkLabel(r_imgFr, image=pro_img, text='').grid(column=0, row=0, padx=10,pady=10)
 
     create_graph(tabs.tab(' Image Negative'), 3, 1, img=neg_img, txt='Negative Image Histogram')
+
+def histogram_processing():
+    global gray_img, Min, Max, pro_img
+    
+    if (not Min.get().isdigit() or not Max.get().isdigit()) or (int(Min.get()) < 0 or int(Max.get()) > 255) or (Min.get() == '' or Max.get() == '') or (int(Min.get()) >= int(Max.get())):
+        messagebox.showerror('Invalid Range', 'Please enter valid range')
+        return
+
+    I_min = np.amin(gray_img)
+    I_max = np.amax(gray_img)
+    
+    min = int(Min.get())
+    max = int(Max.get())
