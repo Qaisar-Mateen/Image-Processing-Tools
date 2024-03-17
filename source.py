@@ -130,3 +130,17 @@ def select_image(col=0, row=0, imgfr=None):
     mapping = np.arange(255)
     create_mapping_graph(fr1, 0, 2)
 
+
+# ---------------Image Processing functions---------------
+def negative_image():
+    global gray_img, pro_img
+    if gray_img is None:
+        return
+    neg_img = abs(np.amax(gray_img)-gray_img)
+    cv2.imwrite('neg.png', neg_img)
+
+    pro_img = ctk.CTkImage(Image.open('neg.png'), size=image_size)
+    for child in r_imgFr.winfo_children():
+        info = child.grid_info()
+        if info['row'] == 0:
+            child.destroy()
