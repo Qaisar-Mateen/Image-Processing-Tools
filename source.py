@@ -144,3 +144,6 @@ def negative_image():
         info = child.grid_info()
         if info['row'] == 0:
             child.destroy()
+    ctk.CTkLabel(r_imgFr, image=pro_img, text='').grid(column=0, row=0, padx=10,pady=10)
+
+    create_graph(tabs.tab(' Image Negative'), 3, 1, img=neg_img, txt='Negative Image Histogram')
