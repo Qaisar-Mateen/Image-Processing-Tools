@@ -196,3 +196,6 @@ def histogram_processing():
 def equation_mapping():
     global gray_img, mapping, pro_img
 
+    mapped_img = mapping[gray_img].astype('uint8')
+    cv2.imwrite('mapped.png', mapped_img)
+
