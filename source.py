@@ -110,3 +110,23 @@ def select_image(col=0, row=0, imgfr=None):
 
     create_graph(tabs.tab('Linear Mapping'), 1, 0, img=gray_img)
     create_graph(tabs.tab('Linear Mapping'), 3, 0, txt='Linear Mapped Histogram')
+
+    create_graph(tabs.tab('Non-Linear Mapping'), 1, 0, img=gray_img)
+    create_graph(tabs.tab('Non-Linear Mapping'), 3, 0, txt='Non-Linear Mapped Histogram')
+
+    create_graph(tabs.tab('ACE Filter'), 1, 0, img=gray_img)
+    create_graph(tabs.tab('ACE Filter'), 3, 0, txt='ACE Histogram')
+
+    if tabs.get() == 'Specified Equalization':
+        for frm in tabs.tab('Specified Equalization').winfo_children():
+            if frm.grid_info()['row'] == 1:
+                fr = frm
+        if col==0:
+            create_graph(fr, 1, 0, img=gray_img, txt='Target Image Histogram')
+        elif col==1:
+            create_graph(fr, 3, 0, img=imgref, txt='Reference Image Histogram')
+
+    global mapping
+    mapping = np.arange(255)
+    create_mapping_graph(fr1, 0, 2)
+
