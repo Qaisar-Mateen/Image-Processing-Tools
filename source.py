@@ -199,3 +199,7 @@ def equation_mapping():
     mapped_img = mapping[gray_img].astype('uint8')
     cv2.imwrite('mapped.png', mapped_img)
 
+    pro_img = ctk.CTkImage(Image.open('mapped.png'), size=image_size)
+    for child in r_imgFr.winfo_children():
+        info = child.grid_info()
+  
