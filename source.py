@@ -160,3 +160,15 @@ def histogram_processing():
     
     min = int(Min.get())
     max = int(Max.get())
+    
+    if min <= I_min and max >= I_max: # stretching
+        
+        stretched_img = np.round(((gray_img - I_min) / (I_max - I_min))* (max - min) + min)
+        stretched_img = np.clip(stretched_img, 0, 255).astype('uint8')
+        cv2.imwrite('stretched.png', stretched_img)
+
+        pro_img = ctk.CTkImage(Image.open('stretched.png'), size=image_size)
+        for child in r_imgFr.winfo_children():
+            info = child.grid_info()
+            if info['row'] == 0:
+                child.destroy()
