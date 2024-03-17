@@ -193,3 +193,6 @@ def histogram_processing():
         messagebox.showerror('Invalid Range', 'Range is neither shrinking nor stretching')
         return
 
+def equation_mapping():
+    global gray_img, mapping, pro_img
+
