@@ -244,3 +244,6 @@ def Non_Linear_Mapping():
         info = child.grid_info()
         if info['row'] == 0:
             child.destroy()
+
+    ctk.CTkLabel(r_imgFr, image=pro_img, text='').grid(column=0, row=0, padx=10,pady=10)
+
