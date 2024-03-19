@@ -252,6 +252,11 @@ def Non_Linear_Mapping():
 
 def ace_filter():
     global pro_img
+    
     if (not winSize.get().isdigit()) or (winSize.get() == '') or (int(winSize.get()) < 1):
         messagebox.showerror('Invalid Input', 'Please enter valid input')
         return
+    
+    global gray_img, r_imgFr, k1_val, k2_val
+    img = np.float32(gray_img)
+    size = int(winSize.get())
