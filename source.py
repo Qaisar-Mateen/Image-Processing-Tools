@@ -235,5 +235,8 @@ def Non_Linear_Mapping():
         r_val = 1 / r_val
 
     mapped_img = np.round(k_val * ((gray_img/k_val) ** r_val))
+    mapped_img = np.clip(mapped_img, 0, 255).astype('uint8')
+    cv2.imwrite('non_linear_mapped.png', mapped_img)
 
+    pro_img = ctk.CTkImage(Image.open('non_linear_mapped.png'), size=image_size)
 
