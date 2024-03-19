@@ -221,6 +221,7 @@ def Non_Linear_Mapping():
 
     if (k_val == '' or r_val == ''):
         messagebox.showerror('Invalid Input', 'Please enter valid input')
+        return
         
     k_val = float(k_val)
     r_val = float(r_val)
@@ -228,6 +229,11 @@ def Non_Linear_Mapping():
     if (not isinstance(k_val, int) and not isinstance(k_val, float)) or (not isinstance(k_val, int) and not isinstance(k_val, float)) or (float(k_val) <= 0 or float(r_val) == 0):
         messagebox.showerror('Invalid Input', 'Please enter valid input')
         return
+    
+    if r_val < 0:
+        r_val = abs(r_val)
+        r_val = 1 / r_val
 
-        return
+    mapped_img = np.round(k_val * ((gray_img/k_val) ** r_val))
+
 
