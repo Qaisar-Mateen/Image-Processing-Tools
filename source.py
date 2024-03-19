@@ -17,6 +17,7 @@ k1_val,k2_val,process_btn,upload_btn,winSize,imgref,wtf = 0.5,0.5,None,None,None
 upperFr,mapping,fr1,k,r,arrow,app,gray_img,r_imgFr,l_imgFr,tabs,Min,Max = None,None,None,None,None,None,None,None,None,None,None,None,None
 image_size = (339, 190)
 hov, nor = '#AF4BD6', '#9130BD'
+pro_img = None
 
 
 def event_handler():
@@ -93,7 +94,7 @@ def select_image(col=0, row=0, imgfr=None):
         gray_img = cv2.cvtColor(colored_img, cv2.COLOR_BGR2GRAY)
         cv2.imwrite('gray.png', gray_img)
         img1 = ctk.CTkImage(Image.open('gray.png'), size=image_size)
-     
+
     # remove previous image
     for child in imgfr.winfo_children():
         info = child.grid_info()
@@ -129,7 +130,7 @@ def select_image(col=0, row=0, imgfr=None):
     global mapping
     mapping = np.arange(255)
     create_mapping_graph(fr1, 0, 2)
-
+    
 
 # ---------------Image Processing functions---------------
 def negative_image():
@@ -147,6 +148,7 @@ def negative_image():
     ctk.CTkLabel(r_imgFr, image=pro_img, text='').grid(column=0, row=0, padx=10,pady=10)
 
     create_graph(tabs.tab(' Image Negative'), 3, 1, img=neg_img, txt='Negative Image Histogram')
+
 
 def histogram_processing():
     global gray_img, Min, Max, pro_img
@@ -188,10 +190,13 @@ def histogram_processing():
             if info['row'] == 0:
                 child.destroy()
         ctk.CTkLabel(r_imgFr, image=pro_img, text='').grid(column=0, row=0, padx=10,pady=10)
+
+        create_graph(tabs.tab('Shrink & Stretch'), 3, 0, img=shrinked_img, txt='Shrinked Histogram')
     
     else:
         messagebox.showerror('Invalid Range', 'Range is neither shrinking nor stretching')
         return
+
 
 def equation_mapping():
     global gray_img, mapping, pro_img
