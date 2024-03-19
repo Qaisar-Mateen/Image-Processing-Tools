@@ -239,4 +239,8 @@ def Non_Linear_Mapping():
     cv2.imwrite('non_linear_mapped.png', mapped_img)
 
     pro_img = ctk.CTkImage(Image.open('non_linear_mapped.png'), size=image_size)
-
+    
+    for child in r_imgFr.winfo_children():
+        info = child.grid_info()
+        if info['row'] == 0:
+            child.destroy()
