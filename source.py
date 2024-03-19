@@ -249,3 +249,9 @@ def Non_Linear_Mapping():
 
     create_graph(tabs.tab('Non-Linear Mapping'), 3, 0, img=mapped_img, txt='Mapped Image Histogram')
 
+
+def ace_filter():
+    global pro_img
+    if (not winSize.get().isdigit()) or (winSize.get() == '') or (int(winSize.get()) < 1):
+        messagebox.showerror('Invalid Input', 'Please enter valid input')
+        return
