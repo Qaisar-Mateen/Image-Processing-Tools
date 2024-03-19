@@ -213,3 +213,13 @@ def equation_mapping():
 
     create_graph(tabs.tab('Linear Mapping'), 3, 0, img=mapped_img, txt='Mapped Image Histogram')
 
+
+def Non_Linear_Mapping():
+    global k, r, pro_img
+    k_val = k.get()
+    r_val = r.get()
+
+    if (k_val == '' or r_val == ''):
+        messagebox.showerror('Invalid Input', 'Please enter valid input')
+        return
+
