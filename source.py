@@ -270,3 +270,10 @@ def ace_filter():
     m = cv2.blur(img, (size, size)) # calculate local mean for each window
     std = cv2.blur((img - m)**2, (size, size))**0.5 # calculate local std for each window
     mean = np.mean(img)
+    
+    pro_img = ctk.CTkImage(Image.open('ace.png'), size=image_size)
+    for child in r_imgFr.winfo_children():
+        info = child.grid_info()
+        if info['row'] == 0:
+            child.destroy()
+
