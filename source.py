@@ -311,3 +311,7 @@ def specified_equalization():
 
     wtf = True
 
+    for child in r_imgFr.winfo_children():
+        info = child.grid_info()
+        if info['row'] == 0 and info['column'] == 0:
+            child.destroy()
