@@ -294,3 +294,6 @@ def specified_equalization():
     values_ref = cv2.calcHist([imgref], [0], None, [256], [0, 256])
     values_ref = values_ref.cumsum()
 
+    # normalizing the values
+    values_target = values_target / values_target.max()
+    values_ref = values_ref / values_ref.max()
