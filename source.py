@@ -302,3 +302,7 @@ def specified_equalization():
     values_target = np.round(values_target * np.amax(gray_img)).astype('uint8')
     values_ref = np.round(values_ref * np.amax(imgref)).astype('uint8')
 
+    # mapping the values
+    new_img = np.interp(values_target, values_ref, range(256)).astype('uint8')
+
+    new_img = new_img[gray_img]
