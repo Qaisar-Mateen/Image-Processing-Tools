@@ -328,3 +328,8 @@ def process_image():
     if gray_img is None:
         messagebox.showerror('ERROR', 'Please select an image first!')
         return
+     
+    if tabs.get() == ' Image Negative':
+        negative_image()
+    elif tabs.get() == 'Shrink & Stretch':
+        histogram_processing()
