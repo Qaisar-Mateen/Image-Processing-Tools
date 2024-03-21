@@ -337,3 +337,8 @@ def process_image():
         equation_mapping()
     elif tabs.get() == 'Non-Linear Mapping':
         Non_Linear_Mapping()
+    elif tabs.get() == 'ACE Filter':
+        ace_filter()
+    elif tabs.get() == 'Specified Equalization':
+        specified_equalization()
+
