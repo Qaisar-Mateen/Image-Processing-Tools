@@ -321,3 +321,10 @@ def specified_equalization():
                 fr = frm
 
     create_graph(fr, 5, 0, img=new_img, txt='Processed Histogram')
+
+
+def process_image():
+    global tabs, gray_img
+    if gray_img is None:
+        messagebox.showerror('ERROR', 'Please select an image first!')
+        return
