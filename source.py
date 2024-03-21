@@ -297,3 +297,8 @@ def specified_equalization():
     # normalizing the values
     values_target = values_target / values_target.max()
     values_ref = values_ref / values_ref.max()
+
+    # multiply by max gray level
+    values_target = np.round(values_target * np.amax(gray_img)).astype('uint8')
+    values_ref = np.round(values_ref * np.amax(imgref)).astype('uint8')
+
