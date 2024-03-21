@@ -315,3 +315,9 @@ def specified_equalization():
         info = child.grid_info()
         if info['row'] == 0 and info['column'] == 0:
             child.destroy()
+    
+    for frm in tabs.tab('Specified Equalization').winfo_children():
+            if frm.grid_info()['row'] == 1:
+                fr = frm
+
+    create_graph(fr, 5, 0, img=new_img, txt='Processed Histogram')
