@@ -280,3 +280,13 @@ def ace_filter():
     ctk.CTkLabel(r_imgFr, image=pro_img, text='').grid(column=0, row=0, padx=10,pady=10)
     create_graph(tabs.tab('ACE Filter'), 3, 0, img=ace_image, txt='ACE Histogram')
 
+
+def specified_equalization():
+    global gray_img, imgref, tabs, r_imgFr, wtf
+    if imgref is None:
+        messagebox.showerror('ERROR', 'Please select both images first!')
+        return
+    
+    # running sum of the histogram
+    values_target = cv2.calcHist([gray_img], [0], None, [256], [0, 256])
+    values_target = values_target.cumsum()
