@@ -290,3 +290,7 @@ def specified_equalization():
     # running sum of the histogram
     values_target = cv2.calcHist([gray_img], [0], None, [256], [0, 256])
     values_target = values_target.cumsum()
+    
+    values_ref = cv2.calcHist([imgref], [0], None, [256], [0, 256])
+    values_ref = values_ref.cumsum()
+
