@@ -306,3 +306,8 @@ def specified_equalization():
     new_img = np.interp(values_target, values_ref, range(256)).astype('uint8')
 
     new_img = new_img[gray_img]
+
+    cv2.imwrite('equalized.png', new_img)
+
+    wtf = True
+
