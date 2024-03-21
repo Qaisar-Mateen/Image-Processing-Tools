@@ -260,3 +260,7 @@ def ace_filter():
     global gray_img, r_imgFr, k1_val, k2_val
     img = np.float32(gray_img)
     size = int(winSize.get())
+
+    m = cv2.blur(img, (size, size)) # calculate local mean for each window
+    std = cv2.blur((img - m)**2, (size, size))**0.5 # calculate local std for each window
+    mean = np.mean(img)
