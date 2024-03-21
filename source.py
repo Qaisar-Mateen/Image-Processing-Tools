@@ -342,3 +342,9 @@ def process_image():
     elif tabs.get() == 'Specified Equalization':
         specified_equalization()
 
+
+
+# ---------------graph functions---------------
+def create_graph(root, col, row, img=None, canvas=None, txt='Origional Histogram'):
+    hist = cv2.calcHist([img], [0], None, [256], [0, 256])
+
