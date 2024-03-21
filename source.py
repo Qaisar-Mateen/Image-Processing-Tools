@@ -333,3 +333,7 @@ def process_image():
         negative_image()
     elif tabs.get() == 'Shrink & Stretch':
         histogram_processing()
+    elif tabs.get() == 'Linear Mapping':
+        equation_mapping()
+    elif tabs.get() == 'Non-Linear Mapping':
+        Non_Linear_Mapping()
