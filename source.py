@@ -387,3 +387,9 @@ def create_mapping_graph(root, r, c, start=None, start_y=None, end=None, end_y=N
         slope = (end_y - start_y) / (end - start)
         mapping[start:end] = start_y + slope * (np.arange(start, end) - start)
     
+    fig = Figure(figsize=(5.8, 3.8), dpi=78)
+    ax = fig.add_subplot(111)
+    ax.plot(mapping, color=nor)
+    ax.set_xlabel('Input Pixel Value')
+    ax.set_ylabel('Output Pixel Value')
+    ax.set_title('Mapping Graph')
