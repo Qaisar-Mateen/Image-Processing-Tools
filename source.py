@@ -404,3 +404,14 @@ def create_mapping_graph(root, r, c, start=None, start_y=None, end=None, end_y=N
     canvas.get_tk_widget().grid(column=c, row=r, pady=5, padx=5)
 
 
+# ---------------Layout functions---------------
+def show_val(value, r, txt):
+    global k1_val, k2_val
+
+    if r == 1:
+        k1_val =  round(float(value), 2)
+        txt.configure(text=f'{k1_val:.2f}')
+    else:
+        k2_val =  round(float(value), 2)
+        txt.configure(text=f'{k2_val:.2f}')
+
