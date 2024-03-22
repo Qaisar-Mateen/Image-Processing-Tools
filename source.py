@@ -348,3 +348,19 @@ def process_image():
 def create_graph(root, col, row, img=None, canvas=None, txt='Origional Histogram'):
     hist = cv2.calcHist([img], [0], None, [256], [0, 256])
 
+    fig = Figure(figsize=(5.8, 3.8), dpi=78)
+    ax = fig.add_subplot(111)
+    ax.plot(hist, color=nor)
+
+    if canvas:
+        canvas.get_tk_widget().grid_forget()
+
+    ax.set_xlabel('Pixel Value')
+    ax.set_ylabel('Frequency')
+    ax.set_title(txt)
+
+    for child in root.winfo_children():
+        info = child.grid_info()
+        if info['row'] == row and info['column'] == col:
+            child.destroy()
+
