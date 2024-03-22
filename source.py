@@ -364,3 +364,9 @@ def create_graph(root, col, row, img=None, canvas=None, txt='Origional Histogram
         if info['row'] == row and info['column'] == col:
             child.destroy()
 
+    canvas = FigureCanvasTkAgg(fig, master=root)
+    canvas.draw()
+    canvas.get_tk_widget().grid(column=col, row=row, pady=15, padx=5)
+
+    return canvas
+
