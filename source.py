@@ -370,3 +370,9 @@ def create_graph(root, col, row, img=None, canvas=None, txt='Origional Histogram
 
     return canvas
 
+
+def update_graph(root, r, c, start, start_y, end, end_y):
+    if (not start.isdigit() or not start_y.isdigit() or not end.isdigit() or not end.isdigit()) or (start == '' or end == '' or end_y == '' or start_y == '') or (int(start) >= int(end) or int(end_y) < 0 or int(end_y) > 255 or int(start) < 0 or int(end) > 255 or int(start_y) < 0 or int(start_y) > 255):
+        messagebox.showerror('Invalid Input', 'Please enter valid input')
+        return
+    create_mapping_graph(root, r, c, int(start), int(start_y), int(end), int(end_y))
