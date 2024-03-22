@@ -376,3 +376,14 @@ def update_graph(root, r, c, start, start_y, end, end_y):
         messagebox.showerror('Invalid Input', 'Please enter valid input')
         return
     create_mapping_graph(root, r, c, int(start), int(start_y), int(end), int(end_y))
+
+
+def create_mapping_graph(root, r, c, start=None, start_y=None, end=None, end_y=None):
+    global mapping
+    if mapping is None:
+        mapping = np.arange(255)
+
+    if end is not None or end_y is not None or start is not None or start_y is not None:
+        slope = (end_y - start_y) / (end - start)
+        mapping[start:end] = start_y + slope * (np.arange(start, end) - start)
+    
