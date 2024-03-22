@@ -393,3 +393,14 @@ def create_mapping_graph(root, r, c, start=None, start_y=None, end=None, end_y=N
     ax.set_xlabel('Input Pixel Value')
     ax.set_ylabel('Output Pixel Value')
     ax.set_title('Mapping Graph')
+
+    for child in root.winfo_children():
+        info = child.grid_info()
+        if info['row'] == r and info['column'] == c:
+            child.destroy()
+
+    canvas = FigureCanvasTkAgg(fig, master=root)
+    canvas.draw()
+    canvas.get_tk_widget().grid(column=c, row=r, pady=5, padx=5)
+
+
