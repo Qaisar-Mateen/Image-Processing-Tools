@@ -415,3 +415,13 @@ def show_val(value, r, txt):
         k2_val =  round(float(value), 2)
         txt.configure(text=f'{k2_val:.2f}')
 
+def populize_tab(tab, title):
+    global gray_img, arrow
+
+    if title == 'Image Negative':
+        global neg_img
+        tab.columnconfigure((0,4), weight=1)
+
+        create_graph(tab, 1, 1, img=gray_img, txt='Origional Histogram')
+        ctk.CTkLabel(tab, image=arrow ,text='').grid(column=2, row=1, padx=25, pady=10)
+        create_graph(tab, 3, 1, txt='Negative Image Histogram')
