@@ -425,3 +425,12 @@ def populize_tab(tab, title):
         create_graph(tab, 1, 1, img=gray_img, txt='Origional Histogram')
         ctk.CTkLabel(tab, image=arrow ,text='').grid(column=2, row=1, padx=25, pady=10)
         create_graph(tab, 3, 1, txt='Negative Image Histogram')
+        
+    elif title == 'Shrink & Stretch':
+        global Min, Max
+        tab.columnconfigure((0,4), weight=1)
+        fr = ctk.CTkFrame(tab)
+        fr.grid(column=1, row=1, pady=5, padx=5, sticky='news', columnspan=3)
+        fr.columnconfigure((0,4), weight=1)
+        ctk.CTkLabel(fr, text='New Range: ').grid(column=1, row=0, pady=5, padx=5, sticky='e')
+        Min = ctk.CTkEntry(fr, width=105, placeholder_text='Range Min')
