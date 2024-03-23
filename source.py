@@ -469,3 +469,6 @@ def populize_tab(tab, title):
         end_y_entry = ctk.CTkEntry(fr, width=105, placeholder_text='End Y Value')
         end_y_entry.grid(column=4, row=1, padx=5, pady=5)
         
+        but = ctk.CTkButton(fr, text='Create Mapping', command=lambda: update_graph(fr1, 0, 2, start=start_entry.get(), start_y=start_y_entry.get(), end=end_entry.get(), end_y=end_y_entry.get()), fg_color=nor, hover_color=hov)
+        but.grid(column=2, row=2, padx=5, pady=5, columnspan=2)
+
