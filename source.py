@@ -442,3 +442,10 @@ def populize_tab(tab, title):
         ctk.CTkLabel(tab, image=arrow, text='').grid(column=2, row=0, padx=25, pady=10)
         create_graph(tab, col=3, row=0, txt='Processed Histogram')
 
+    elif title == 'Linear Mapping':
+        global fr1
+        tab.columnconfigure((0,4), weight=1)
+
+        create_graph(tab, 1, 0)
+        ctk.CTkLabel(tab, image=arrow, text='').grid(column=2, row=0, padx=25, pady=10)
+        create_graph(tab, 3, 0, txt='Mapped Histogram')
