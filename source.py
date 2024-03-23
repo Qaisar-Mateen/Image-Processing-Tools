@@ -434,10 +434,11 @@ def populize_tab(tab, title):
         fr.columnconfigure((0,4), weight=1)
         ctk.CTkLabel(fr, text='New Range: ').grid(column=1, row=0, pady=5, padx=5, sticky='e')
         Min = ctk.CTkEntry(fr, width=105, placeholder_text='Range Min')
-                Min.grid(column=2, row=0, padx=5, pady=5)
+        Min.grid(column=2, row=0, padx=5, pady=5)
         Max = ctk.CTkEntry(fr, width=105, placeholder_text='Range Max')
         Max.grid(column=3, row=0, padx=5, pady=5)
 
         create_graph(tab, col=1, row=0)
         ctk.CTkLabel(tab, image=arrow, text='').grid(column=2, row=0, padx=25, pady=10)
         create_graph(tab, col=3, row=0, txt='Processed Histogram')
+
