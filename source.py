@@ -455,3 +455,7 @@ def populize_tab(tab, title):
         fr1.columnconfigure((0,4), weight=1)
         create_mapping_graph(fr1, 0, 2)
 
+        fr = ctk.CTkFrame(tab)
+        fr.grid(column=1, row=2, pady=5, padx=5, sticky='news', columnspan=3)
+        fr.columnconfigure((0,5), weight=1)
+
