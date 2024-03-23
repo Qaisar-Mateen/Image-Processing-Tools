@@ -458,4 +458,9 @@ def populize_tab(tab, title):
         fr = ctk.CTkFrame(tab)
         fr.grid(column=1, row=2, pady=5, padx=5, sticky='news', columnspan=3)
         fr.columnconfigure((0,5), weight=1)
+        
+        start_entry = ctk.CTkEntry(fr, width=105, placeholder_text='Start Point')
+        start_entry.grid(column=1, row=1, padx=5, pady=5)
+        start_y_entry = ctk.CTkEntry(fr, width=105, placeholder_text='Start Y Value')
+        start_y_entry.grid(column=2, row=1, padx=5, pady=5)
 
