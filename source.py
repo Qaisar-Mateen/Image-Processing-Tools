@@ -464,3 +464,8 @@ def populize_tab(tab, title):
         start_y_entry = ctk.CTkEntry(fr, width=105, placeholder_text='Start Y Value')
         start_y_entry.grid(column=2, row=1, padx=5, pady=5)
 
+        end_entry = ctk.CTkEntry(fr, width=105, placeholder_text='End Point')
+        end_entry.grid(column=3, row=1, padx=5, pady=5)
+        end_y_entry = ctk.CTkEntry(fr, width=105, placeholder_text='End Y Value')
+        end_y_entry.grid(column=4, row=1, padx=5, pady=5)
+        
