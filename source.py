@@ -506,3 +506,8 @@ def populize_tab(tab, title):
         fr.grid(column=1, row=2, pady=5, padx=5, sticky='news', columnspan=3)
         fr.columnconfigure((0,4), weight=1)
         
+        winSize = ctk.CTkEntry(tab, width=105, placeholder_text='Window Size')
+        winSize.grid(column=2, row=1, pady=10, padx=5)
+
+        txt1= ctk.CTkLabel(fr, text='0.50')
+        txt1.grid(column=3, row=1, pady=10, padx=5)
