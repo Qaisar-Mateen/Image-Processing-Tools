@@ -498,3 +498,7 @@ def populize_tab(tab, title):
         global l_imgFr, winSize 
         tab.columnconfigure((0,4), weight=1)
         
+        create_graph(tab, col=1, row=0,img=gray_img)
+        ctk.CTkLabel(tab, image=arrow ,text='').grid(column=2, row=0, padx=25, pady=10)
+        create_graph(tab, col=3, row=0, txt='ACE Histogram')
+
