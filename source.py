@@ -520,3 +520,9 @@ def populize_tab(tab, title):
         ctk.CTkLabel(fr, text='Retention Factor: ').grid(column=1, row=2, pady=10, padx=5, sticky='e')
         k2 = ctk.CTkSlider(fr, width=300, from_=0, to=1, number_of_steps=100, button_color=nor, progress_color=hov, button_hover_color=hov, command=lambda e: show_val(e,2,txt2))
         k2.grid(column=2, row=2, padx=5, pady=10)
+    
+    elif title == 'Specified Equalization':
+        tab.columnconfigure((0,6), weight=1)
+
+        plus = ctk.CTkImage(Image.open('plus.png'), size=(70, 60))
+        noImg = ctk.CTkImage(Image.open('no image.png'), size=image_size)
