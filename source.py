@@ -490,4 +490,8 @@ def populize_tab(tab, title):
         k = ctk.CTkEntry(fr, width=105, placeholder_text='K Value')
         k.grid(column=2, row=1, padx=5, pady=5)
 
+        ctk.CTkLabel(fr, text='r Value (-ve for (1/r)): ').grid(column=3, row=1, pady=5, padx=(10, 5), sticky='e')
+        r = ctk.CTkEntry(fr, width=105, placeholder_text='r Value')
+        r.grid(column=4, row=1, padx=5, pady=5)
+
 
