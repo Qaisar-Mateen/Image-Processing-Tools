@@ -552,3 +552,7 @@ def populize_tab(tab, title):
         fr.grid(column=1, row=1, pady=5, padx=5, sticky='news', columnspan=5)
         fr.columnconfigure((0,6), weight=1)
         create_graph(fr, 1, 0, txt='Target Image Histogram')
+        ctk.CTkLabel(fr, image=plus, text='').grid(column=2, row=0, padx=20, pady=10)
+        create_graph(fr, 3, 0, txt='Reference Image Histogram')
+        ctk.CTkLabel(fr, image=arrow, text='').grid(column=4, row=0, pady=25, padx=10)
+        create_graph(fr, 5, 0, txt='Processed Histogram')
