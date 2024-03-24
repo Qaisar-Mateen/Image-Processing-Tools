@@ -478,3 +478,8 @@ def populize_tab(tab, title):
         create_graph(tab, 1, 0)
         ctk.CTkLabel(tab, image=arrow, text='').grid(column=2, row=0, padx=25, pady=10)
         create_graph(tab, 3, 0, txt='Mapped Histogram')
+
+        fr = ctk.CTkFrame(tab)
+        fr.grid(column=1, row=1, pady=5, padx=5, sticky='news', columnspan=3)
+        fr.columnconfigure((0,6), weight=1)
+
