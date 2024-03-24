@@ -494,4 +494,7 @@ def populize_tab(tab, title):
         r = ctk.CTkEntry(fr, width=105, placeholder_text='r Value')
         r.grid(column=4, row=1, padx=5, pady=5)
 
-
+    elif title == 'ACE Filter':
+        global l_imgFr, winSize 
+        tab.columnconfigure((0,4), weight=1)
+        
