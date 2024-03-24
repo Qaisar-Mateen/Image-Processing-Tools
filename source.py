@@ -515,3 +515,8 @@ def populize_tab(tab, title):
         k1 = ctk.CTkSlider(fr, width=300, from_=0, to=1, number_of_steps=100, button_color=nor, progress_color=hov, button_hover_color=hov, command=lambda e: show_val(e,1,txt1))
         k1.grid(column=2, row=1, padx=5, pady=10)
         
+        txt2 = ctk.CTkLabel(fr, text='0.50')
+        txt2.grid(column=3, row=2, pady=10, padx=5)
+        ctk.CTkLabel(fr, text='Retention Factor: ').grid(column=1, row=2, pady=10, padx=5, sticky='e')
+        k2 = ctk.CTkSlider(fr, width=300, from_=0, to=1, number_of_steps=100, button_color=nor, progress_color=hov, button_hover_color=hov, command=lambda e: show_val(e,2,txt2))
+        k2.grid(column=2, row=2, padx=5, pady=10)
