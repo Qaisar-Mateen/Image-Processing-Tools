@@ -526,3 +526,11 @@ def populize_tab(tab, title):
 
         plus = ctk.CTkImage(Image.open('plus.png'), size=(70, 60))
         noImg = ctk.CTkImage(Image.open('no image.png'), size=image_size)
+
+        f = ctk.CTkFrame(tab)
+        f.grid(column=1, row=0, pady=5, padx=5, sticky='news', columnspan=5)
+        f.columnconfigure((0,6), weight=1)
+        imgFr1 = ctk.CTkFrame(f, corner_radius=20, fg_color="#2B2B2B")
+        imgFr1.grid(row=0, column=1, padx=15, pady=15, sticky='snew')
+        ctk.CTkLabel(imgFr1, image=noImg, text='').grid(column=0, row=0, padx=10, pady=10)
+        ctk.CTkLabel(imgFr1, text='Target Image').grid(column=0, row=1, padx=10, pady=(0,10))
