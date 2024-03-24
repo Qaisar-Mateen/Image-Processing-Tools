@@ -482,4 +482,12 @@ def populize_tab(tab, title):
         fr = ctk.CTkFrame(tab)
         fr.grid(column=1, row=1, pady=5, padx=5, sticky='news', columnspan=3)
         fr.columnconfigure((0,6), weight=1)
+        
+        eq = ctk.CTkLabel(fr, text='y = K(I(r,c)/K)^r')
+        eq.grid(column=1, row=0, padx=5, pady=5, columnspan=4, sticky='n')
+
+        ctk.CTkLabel(fr, text='K Value: ').grid(column=1, row=1, pady=5, padx=5, sticky='e')
+        k = ctk.CTkEntry(fr, width=105, placeholder_text='K Value')
+        k.grid(column=2, row=1, padx=5, pady=5)
+
 
