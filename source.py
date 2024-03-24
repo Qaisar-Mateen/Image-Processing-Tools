@@ -544,3 +544,7 @@ def populize_tab(tab, title):
         imgFr2.grid(row=0, column=3, padx=15, pady=15, sticky='snew')
         ctk.CTkLabel(imgFr2, image=noImg, text='').grid(column=1, row=0, padx=10, pady=10)
         ctk.CTkLabel(imgFr2, text='Reference Image').grid(column=1, row=1, padx=10, pady=(0,10))
+
+        img2_btn = ctk.CTkButton(f, text='Upload Reference Image', command=lambda: select_image(1, 0, imgFr2), fg_color=nor, hover_color=hov)
+        img2_btn.grid(column=3, row=2, padx=10, pady=10)
+
