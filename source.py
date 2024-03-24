@@ -548,3 +548,7 @@ def populize_tab(tab, title):
         img2_btn = ctk.CTkButton(f, text='Upload Reference Image', command=lambda: select_image(1, 0, imgFr2), fg_color=nor, hover_color=hov)
         img2_btn.grid(column=3, row=2, padx=10, pady=10)
 
+        fr = ctk.CTkFrame(tab)
+        fr.grid(column=1, row=1, pady=5, padx=5, sticky='news', columnspan=5)
+        fr.columnconfigure((0,6), weight=1)
+        create_graph(fr, 1, 0, txt='Target Image Histogram')
