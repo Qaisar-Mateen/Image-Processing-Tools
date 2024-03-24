@@ -472,3 +472,9 @@ def populize_tab(tab, title):
         but = ctk.CTkButton(fr, text='Create Mapping', command=lambda: update_graph(fr1, 0, 2, start=start_entry.get(), start_y=start_y_entry.get(), end=end_entry.get(), end_y=end_y_entry.get()), fg_color=nor, hover_color=hov)
         but.grid(column=2, row=2, padx=5, pady=5, columnspan=2)
 
+    elif title == 'Non-Linear Mapping':
+        global k, r
+        tab.columnconfigure((0,4), weight=1)
+        create_graph(tab, 1, 0)
+        ctk.CTkLabel(tab, image=arrow, text='').grid(column=2, row=0, padx=25, pady=10)
+        create_graph(tab, 3, 0, txt='Mapped Histogram')
