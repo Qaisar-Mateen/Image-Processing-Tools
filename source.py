@@ -502,3 +502,7 @@ def populize_tab(tab, title):
         ctk.CTkLabel(tab, image=arrow ,text='').grid(column=2, row=0, padx=25, pady=10)
         create_graph(tab, col=3, row=0, txt='ACE Histogram')
 
+        fr = ctk.CTkFrame(tab)
+        fr.grid(column=1, row=2, pady=5, padx=5, sticky='news', columnspan=3)
+        fr.columnconfigure((0,4), weight=1)
+        
