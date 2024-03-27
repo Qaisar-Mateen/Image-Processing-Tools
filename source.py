@@ -573,4 +573,9 @@ def upper_frame(img=False):
 
         if not img:
             ctk.CTkLabel(l_imgFr, image=img1, text='').grid(column=0, row=0, padx=10,pady=10)
-    
+        
+        if pro_img is not None:
+            ctk.CTkLabel(r_imgFr, image=pro_img, text='').grid(column=0, row=0, padx=10,pady=10)
+        else:
+            ctk.CTkLabel(r_imgFr, image=img1, text='').grid(column=0, row=0, padx=10,pady=10)
+
