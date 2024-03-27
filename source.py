@@ -578,4 +578,8 @@ def upper_frame(img=False):
             ctk.CTkLabel(r_imgFr, image=pro_img, text='').grid(column=0, row=0, padx=10,pady=10)
         else:
             ctk.CTkLabel(r_imgFr, image=img1, text='').grid(column=0, row=0, padx=10,pady=10)
+            
+        upload_btn = ctk.CTkButton(upperFr, text='Upload Image', command=select_image, fg_color=nor, hover_color=hov)
+        upload_btn.grid(column=1, row=1, padx=10, pady=10)
 
+    
