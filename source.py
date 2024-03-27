@@ -556,3 +556,11 @@ def populize_tab(tab, title):
         create_graph(fr, 3, 0, txt='Reference Image Histogram')
         ctk.CTkLabel(fr, image=arrow, text='').grid(column=4, row=0, pady=25, padx=10)
         create_graph(fr, 5, 0, txt='Processed Histogram')
+
+def upper_frame(img=False):
+    global app, r_imgFr, l_imgFr, image_size, arrow, upperFr, upload_btn, process_btn
+
+    if app:
+        l_imgFr = ctk.CTkFrame(upperFr, corner_radius=20, fg_color="#2B2B2B")
+        l_imgFr.grid(row=0, column=1, padx=15, pady=15, sticky='snew')
+    
