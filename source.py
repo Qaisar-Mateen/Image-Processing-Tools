@@ -602,3 +602,6 @@ def basicLayout():
         upperFr = ctk.CTkFrame(app, corner_radius=20)
         upperFr.grid(pady=(20, 15), padx=30, row=0, column=0, sticky='new',)
         upperFr.columnconfigure((0,8), weight=1)
+
+        upper_frame()
+
