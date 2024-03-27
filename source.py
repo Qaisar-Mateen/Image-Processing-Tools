@@ -569,3 +569,8 @@ def upper_frame(img=False):
         r_imgFr = ctk.CTkFrame(upperFr, corner_radius=20, fg_color="#2B2B2B")
         r_imgFr.grid(row=0, column=5, padx=15, pady=15, sticky='snew')
     
+        img1 = ctk.CTkImage(Image.open('no image.png'), size=image_size)
+
+        if not img:
+            ctk.CTkLabel(l_imgFr, image=img1, text='').grid(column=0, row=0, padx=10,pady=10)
+    
