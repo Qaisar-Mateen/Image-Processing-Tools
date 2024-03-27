@@ -582,4 +582,6 @@ def upper_frame(img=False):
         upload_btn = ctk.CTkButton(upperFr, text='Upload Image', command=select_image, fg_color=nor, hover_color=hov)
         upload_btn.grid(column=1, row=1, padx=10, pady=10)
 
-    
+        process_btn = ctk.CTkButton(upperFr, text='Process Image', command=process_image, fg_color=nor, hover_color=hov)
+        process_btn.grid(column=5, row=1, padx=10, pady=10)
+
