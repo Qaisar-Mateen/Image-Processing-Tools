@@ -587,3 +587,6 @@ def upper_frame(img=False):
 
         ctk.CTkLabel(l_imgFr, text='Original (Gray Scale) Image').grid(column=0, row=1, padx=10, pady=(0,10))
         ctk.CTkLabel(r_imgFr, text='Processed Image').grid(column=0, row=1, padx=10, pady=(0,10))
+
+def basicLayout():
+    global app, r_imgFr, l_imgFr, image_size, arrow, tabs, upperFr
