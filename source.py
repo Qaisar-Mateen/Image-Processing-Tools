@@ -590,3 +590,10 @@ def upper_frame(img=False):
 
 def basicLayout():
     global app, r_imgFr, l_imgFr, image_size, arrow, tabs, upperFr
+    if app:
+        app.title('DIP Assignment (21L-1770)')
+        width= app.winfo_screenwidth()               
+        height= app.winfo_screenheight()
+        app.geometry('%dx%d'% (width//1.3, (height//1.3)+40))
+        app.columnconfigure(0, weight=1)
+        app.rowconfigure(1, weight=1)
