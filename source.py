@@ -605,3 +605,8 @@ def basicLayout():
 
         upper_frame()
 
+        # lower frame for controls
+        lowerFr = ctk.CTkScrollableFrame(app, corner_radius=20)
+        lowerFr.grid(pady=(0, 20), padx=30, row=1, column=0, sticky='snew')
+        lowerFr.rowconfigure(0, weight=1)
+
