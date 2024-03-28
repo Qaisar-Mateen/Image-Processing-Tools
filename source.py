@@ -609,4 +609,7 @@ def basicLayout():
         lowerFr = ctk.CTkScrollableFrame(app, corner_radius=20)
         lowerFr.grid(pady=(0, 20), padx=30, row=1, column=0, sticky='snew')
         lowerFr.rowconfigure(0, weight=1)
+        lowerFr.columnconfigure(0, weight=1)
+        tabs = ctk.CTkTabview(lowerFr, segmented_button_selected_color=nor, segmented_button_unselected_hover_color=hov, segmented_button_selected_hover_color=hov)
+        tabs.grid(sticky='news')
 
