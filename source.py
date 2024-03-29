@@ -615,4 +615,7 @@ def basicLayout():
         ace        = tabs.add('ACE Filter')
         equalize   = tabs.add('Specified Equalization')
         mapping    = tabs.add('Linear Mapping')
-        
+        negative   = tabs.add(' Image Negative')
+        histogram  = tabs.add('Shrink & Stretch')
+        non_linear = tabs.add('Non-Linear Mapping')
+        tabs.set('ACE Filter')
