@@ -622,3 +622,9 @@ def basicLayout():
 
         # negative tab content
         populize_tab(negative, 'Image Negative')
+
+        # histogram tab content
+        populize_tab(histogram, 'Shrink & Stretch')
+
+        # linear mapping tab content
+        populize_tab(mapping, 'Linear Mapping')
