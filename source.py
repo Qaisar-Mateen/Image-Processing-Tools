@@ -619,3 +619,6 @@ def basicLayout():
         histogram  = tabs.add('Shrink & Stretch')
         non_linear = tabs.add('Non-Linear Mapping')
         tabs.set('ACE Filter')
+
+        # negative tab content
+        populize_tab(negative, 'Image Negative')
