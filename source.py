@@ -612,4 +612,7 @@ def basicLayout():
         lowerFr.columnconfigure(0, weight=1)
         tabs = ctk.CTkTabview(lowerFr, segmented_button_selected_color=nor, segmented_button_unselected_hover_color=hov, segmented_button_selected_hover_color=hov)
         tabs.grid(sticky='news')
-
+        ace        = tabs.add('ACE Filter')
+        equalize   = tabs.add('Specified Equalization')
+        mapping    = tabs.add('Linear Mapping')
+        
