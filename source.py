@@ -642,3 +642,6 @@ def basicLayout():
 if __name__ == '__main__':
     app = ctk.CTk()
     basicLayout()
+    threading.Thread(target=event_handler).start()
+    app.mainloop()
+    app = None
