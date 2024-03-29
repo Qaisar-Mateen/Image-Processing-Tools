@@ -628,3 +628,9 @@ def basicLayout():
 
         # linear mapping tab content
         populize_tab(mapping, 'Linear Mapping')
+
+        # non linear mapping tab content
+        populize_tab(non_linear, 'Non-Linear Mapping')
+
+        # Adaptive Contrast Enhancement tab content
+        populize_tab(ace, 'ACE Filter')
