@@ -637,3 +637,6 @@ def basicLayout():
 
         # specified Histogram equalization tab content
         populize_tab(equalize, 'Specified Equalization')
+
+
+if __name__ == '__main__':
