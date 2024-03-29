@@ -648,3 +648,6 @@ if __name__ == '__main__':
 
     if os.path.exists('gray.png'):
         os.remove('gray.png')
+
+    if os.path.exists('ref.png'):
+        os.remove('ref.png')
