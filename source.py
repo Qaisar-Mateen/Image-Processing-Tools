@@ -634,3 +634,6 @@ def basicLayout():
 
         # Adaptive Contrast Enhancement tab content
         populize_tab(ace, 'ACE Filter')
+
+        # specified Histogram equalization tab content
+        populize_tab(equalize, 'Specified Equalization')
