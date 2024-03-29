@@ -645,3 +645,6 @@ if __name__ == '__main__':
     threading.Thread(target=event_handler).start()
     app.mainloop()
     app = None
+
+    if os.path.exists('gray.png'):
+        os.remove('gray.png')
