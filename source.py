@@ -654,3 +654,5 @@ if __name__ == '__main__':
 
     if os.path.exists('equalized.png'):
         if os.path.exists('specified.png'):
+            os.remove('specified.png')
+        os.rename('equalized.png','specified.png')
