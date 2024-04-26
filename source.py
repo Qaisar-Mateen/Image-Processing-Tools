@@ -342,7 +342,7 @@ def Blur_filter():
     size = int(winSize1.get())
 
     # padding the image
-    padded_img = np.pad(gray_img, ((size, size), (size, size)), mode='edge')
+    padded_img = np.pad(gray_img, ((size//2, size//2), (size//2, size//2)), mode='edge')
 
     new_img = np.zeros_like(gray_img)
 
