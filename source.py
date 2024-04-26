@@ -344,7 +344,7 @@ def Blur_filter():
     # padding the image
     padded_img = np.pad(gray_img, ((size//2, size//2), (size//2, size//2)), mode='edge')
 
-    new_img = np.zeros_like(gray_img)
+    new_img = np.zeros(gray_img.shape, dtype=np.uint8)
 
     def pseudo_median_filter(s):
         
@@ -357,19 +357,21 @@ def Blur_filter():
         win = np.copy(s)
         s = s.flatten()
         m = np.round((len(s)+1)/2).astype(int)
-        mid = len(win)//2
-        win[mid, mid] = minimax(s, m)//2 + maximin(s, m)//2
-        return win
 
+        return int(minimax(s, m)/2 + maximin(s, m)/2)
+
+    
     height, width = gray_img.shape
     size = size // 2
+    new_img = np.copy(gray_img)
+    
     for y in range(size, height - size):
         for x in range(size, width - size):
             
             window = padded_img[y - size:y + size + 1, x - size:x + size + 1]
             window = pseudo_median_filter(window)
 
-            new_img[y - size:y + size +1, x-size:x + size + 1] = window
+            new_img[y, x] = window
     
     cv2.imwrite('blurred.png', new_img)
 
