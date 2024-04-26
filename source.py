@@ -556,6 +556,9 @@ def populize_tab(tab, title):
         create_graph(fr, 3, 0, txt='Reference Image Histogram')
         ctk.CTkLabel(fr, image=arrow, text='').grid(column=4, row=0, pady=25, padx=10)
         create_graph(fr, 5, 0, txt='Processed Histogram')
+    
+    elif title == 'Blur Filter':
+        tab.columnconfigure((0,6), weight=1)
 
 def upper_frame(img=False):
     global app, r_imgFr, l_imgFr, image_size, arrow, upperFr, upload_btn, process_btn
@@ -612,6 +615,9 @@ def basicLayout():
         lowerFr.columnconfigure(0, weight=1)
         tabs = ctk.CTkTabview(lowerFr, segmented_button_selected_color=nor, segmented_button_unselected_hover_color=hov, segmented_button_selected_hover_color=hov)
         tabs.grid(sticky='news')
+
+        sudomeadian= tabs.add('Blur Filter')
+        MMSE       = tabs.add('Denoise Filter')
         ace        = tabs.add('ACE Filter')
         equalize   = tabs.add('Specified Equalization')
         mapping    = tabs.add('Linear Mapping')
@@ -637,6 +643,12 @@ def basicLayout():
 
         # specified Histogram equalization tab content
         populize_tab(equalize, 'Specified Equalization')
+
+        # Sudomedian Filter tab content
+        populize_tab(sudomeadian, 'Blur Filter')
+
+        # MMSE Filter tab content
+        populize_tab(MMSE, 'Denoise Filter')
 
 
 if __name__ == '__main__':
