@@ -118,6 +118,13 @@ def select_image(col=0, row=0, imgfr=None):
     create_graph(tabs.tab('ACE Filter'), 1, 0, img=gray_img)
     create_graph(tabs.tab('ACE Filter'), 3, 0, txt='ACE Histogram')
 
+    create_graph(tabs.tab('Blur Filter'), 1, 0, img=gray_img)
+    create_graph(tabs.tab('Blur Filter'), 3, 0, txt='Blur Image Histogram')
+    
+    create_graph(tabs.tab('Denoise Filter'), 1, 0, img=gray_img)
+    create_graph(tabs.tab('Denoise Filter'), 3, 0, txt='Denoised Image Histogram')
+
+
     if tabs.get() == 'Specified Equalization':
         for frm in tabs.tab('Specified Equalization').winfo_children():
             if frm.grid_info()['row'] == 1:
@@ -322,6 +329,7 @@ def specified_equalization():
 
     create_graph(fr, 5, 0, img=new_img, txt='Processed Histogram')
 
+
 def sudoMedian_filter():
     global gray_img, winSize1, pro_img
     if (not winSize1.get().isdigit()) or (winSize1.get() == '') or (int(winSize1.get()) < 1):
@@ -329,6 +337,12 @@ def sudoMedian_filter():
         return
     
     size = int(winSize1.get())
+
+    # padding the image
+    padded_img = np.pad(gray_img, ((size, size), (size, size)), mode='edge')
+
+    
+    
 
 
 def MMSE_filter():
