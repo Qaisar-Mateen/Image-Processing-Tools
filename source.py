@@ -346,15 +346,17 @@ def Blur_filter():
     def pseudo_median_filter(s):
         
         def maximin(s, m):
-            max([for ])
+            return max([min(s[i:m+i]) for i in range(len(s) - m + 1)])
         
         def minimax(s, m):
-            return
+            return min([max(s[i:m+i]) for i in range(len(s) - m + 1)])
         
+        win = np.copy(s)
         s = s.flatten()
         m = np.round((len(s)+1)/2).astype(int)
-
-        return maximin(s, m)//2 + minimax(s, m)//2
+        mid = len(win)//2
+        win[mid, mid] = minimax(s, m)//2 + maximin(s, m)//2
+        return win
 
     height, width = gray_img.shape
 
@@ -362,8 +364,21 @@ def Blur_filter():
         for x in range(size, width - size):
             
             window = padded_img[y - size:y + size + 1, x - size:x + size + 1]
+            window = pseudo_median_filter(window)
 
-            new_img[y, x] = pseudo_median_filter(window)
+            new_img[y - size:y + size +1, x-size:x + size + 1] = window
+    
+    cv2.imwrite('blurred.png', new_img)
+
+    pro_img = ctk.CTkImage(Image.open('blurred.png'), size=image_size)
+    for child in r_imgFr.winfo_children():
+        info = child.grid_info()
+        if info['row'] == 0:
+            child.destroy()
+    ctk.CTkLabel(r_imgFr, image=pro_img, text='').grid(column=0, row=0, padx=10,pady=10)
+    create_graph(tabs.tab('Blur Filter'), 3, 0, img=new_img, txt='Blurred Image Histogram')
+
+            
 
     
 
