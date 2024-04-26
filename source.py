@@ -265,9 +265,12 @@ def ace_filter():
         return
     
     global gray_img, r_imgFr, k1_val, k2_val
-    img = np.float32(gray_img)
+    
     size = int(winSize.get())
-
+    padded_img = np.pad(gray_img, ((size, size), (size, size)), mode='edge')
+    
+    img = np.float32(padded_img)
+    
     # k1(M(r,c)/local std)(I(r,c) - m(r,c)) + k2m(r,c)
     ace_image = k1_val *(mean/std)*(img - m) + k2_val * m
     ace_image = np.clip(ace_image, 0, 255).astype('uint8')
@@ -378,10 +381,6 @@ def Blur_filter():
     ctk.CTkLabel(r_imgFr, image=pro_img, text='').grid(column=0, row=0, padx=10,pady=10)
     create_graph(tabs.tab('Blur Filter'), 3, 0, img=new_img, txt='Blurred Image Histogram')
 
-            
-
-    
-
 
 def Denose_filter():
     global gray_img, winSize2, std, pro_img
@@ -411,7 +410,7 @@ def process_image():
     elif tabs.get() == 'Specified Equalization':
         specified_equalization()
     elif tabs.get() == 'Blur Filter':
-        Blur_filter()
+        threading.Thread(target=Blur_filter()).start()
     elif tabs.get() == 'Denoise Filter':
         Denose_filter()
 
