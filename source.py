@@ -355,9 +355,6 @@ def Blur_filter():
         m = np.round((len(s)+1)/2).astype(int)
 
         return maximin(s, m)//2 + minimax(s, m)//2
-        
-        
-        
 
     height, width = gray_img.shape
 
@@ -366,11 +363,7 @@ def Blur_filter():
             
             window = padded_img[y - size:y + size + 1, x - size:x + size + 1]
 
-            
-            filtered_value = pseudo_median_filter(window)
-
-            
-            filtered_image[y, x] = filtered_value
+            new_img[y, x] = pseudo_median_filter(window)
 
     
 
