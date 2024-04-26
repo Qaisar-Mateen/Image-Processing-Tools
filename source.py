@@ -330,7 +330,7 @@ def specified_equalization():
     create_graph(fr, 5, 0, img=new_img, txt='Processed Histogram')
 
 
-def sudoMedian_filter():
+def Blur_filter():
     global gray_img, winSize1, pro_img
     if (not winSize1.get().isdigit()) or (winSize1.get() == '') or (int(winSize1.get()) < 1):
         messagebox.showerror('Invalid Input', 'Please enter valid input')
@@ -341,11 +341,29 @@ def sudoMedian_filter():
     # padding the image
     padded_img = np.pad(gray_img, ((size, size), (size, size)), mode='edge')
 
-    
+    new_img = np.zeros_like(gray_img)
+
+    def pseudo_median_filter(window):
+        
+        
+
+    height, width = gray_img.shape
+
+    for y in range(size, height - size):
+        for x in range(size, width - size):
+            
+            window = padded_img[y - size:y + size + 1, x - size:x + size + 1]
+
+            
+            filtered_value = pseudo_median_filter(window)
+
+            
+            filtered_image[y, x] = filtered_value
+
     
 
 
-def MMSE_filter():
+def Denose_filter():
     global gray_img, winSize2, std, pro_img
     if (not winSize2.get().isdigit() or not std.get().isdigit()) or (winSize2.get() == '' or std.get() == '') or (int(winSize2.get()) < 1 or int(std.get()) < 0):
         messagebox.showerror('Invalid Input', 'Please enter valid input')
@@ -373,9 +391,9 @@ def process_image():
     elif tabs.get() == 'Specified Equalization':
         specified_equalization()
     elif tabs.get() == 'Blur Filter':
-        sudoMedian_filter()
+        Blur_filter()
     elif tabs.get() == 'Denoise Filter':
-        MMSE_filter()
+        Denose_filter()
 
 
 
