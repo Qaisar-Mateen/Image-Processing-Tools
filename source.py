@@ -384,15 +384,18 @@ def Blur_filter():
 
 
 def Denose_filter():
-    global gray_img, winSize2, std, pro_img
-    if (not winSize2.get().isdigit() or not std.get().isdigit()) or (winSize2.get() == '' or std.get() == '') or (int(winSize2.get()) < 1 or int(std.get()) < 0):
+    global gray_img, winSize2, variance, pro_img
+    try:
+        size = int(winSize2.get())
+        noise_variance = float(variance.get())
+        if size < 1 or noise_variance < 0:
+            raise ValueError
+    except ValueError:
         messagebox.showerror('Invalid Input', 'Please enter valid input')
         return
-    size = int(winSize2.get())
-    noise_std = float(std.get())
 
     # padding the image
-    padded_img = np.pad(gray_img, ((size//2, size//2), (size//2, size//2)), mode='edge')
+    padded_img = gray_img#np.pad(gray_img, ((size//2, size//2), (size//2, size//2)), mode='edge')
 
     new_img = np.copy(gray_img)
 
@@ -402,8 +405,9 @@ def Denose_filter():
         for x in range(size, w - size):
             window = padded_img[y - size:y + size + 1, x - size:x + size + 1]
             mean = np.mean(window.flatten())
-            std = np.std(window.flatten())
-            new_img[y, x] = (window[size, size] - (noise_std/std)*(window[size, size] - mean)).astype('uint8')
+            var = np.var(window.flatten())
+            #print(new_img[y, x], window[size, size])
+            new_img[y, x] = (window[size, size] - (noise_variance/var)*(window[size, size] - mean)).astype('uint8')
 
     cv2.imwrite('denois.png', new_img)
 
@@ -438,7 +442,7 @@ def process_image():
     elif tabs.get() == 'Blur Filter':
         threading.Thread(target=Blur_filter()).start()
     elif tabs.get() == 'Denoise Filter':
-        Denose_filter()
+        threading.Thread(target=Denose_filter()).start()
 
 
 
@@ -672,7 +676,7 @@ def populize_tab(tab, title):
         winSize1.grid(column=2, row=1, pady=10, padx=5)
 
     elif title == 'Denoise Filter':
-        global winSize2, std
+        global winSize2, variance
 
         tab.columnconfigure((0,6), weight=1)
 
@@ -687,8 +691,8 @@ def populize_tab(tab, title):
         winSize2 = ctk.CTkEntry(fr, width=105, placeholder_text='Window Size')
         winSize2.grid(column=1, row=1, pady=10, padx=5)
 
-        std = ctk.CTkEntry(fr, width=105, placeholder_text='Noise STD')
-        std.grid(column=2, row=1, pady=10, padx=5)
+        variance = ctk.CTkEntry(fr, width=105, placeholder_text='Noise Variance')
+        variance.grid(column=2, row=1, pady=10, padx=5)
 
 
 
