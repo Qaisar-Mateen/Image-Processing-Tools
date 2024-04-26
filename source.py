@@ -322,6 +322,23 @@ def specified_equalization():
 
     create_graph(fr, 5, 0, img=new_img, txt='Processed Histogram')
 
+def sudoMedian_filter():
+    global gray_img, winSize1, pro_img
+    if (not winSize1.get().isdigit()) or (winSize1.get() == '') or (int(winSize1.get()) < 1):
+        messagebox.showerror('Invalid Input', 'Please enter valid input')
+        return
+    
+    size = int(winSize1.get())
+
+
+def MMSE_filter():
+    global gray_img, winSize2, std, pro_img
+    if (not winSize2.get().isdigit() or not std.get().isdigit()) or (winSize2.get() == '' or std.get() == '') or (int(winSize2.get()) < 1 or int(std.get()) < 0):
+        messagebox.showerror('Invalid Input', 'Please enter valid input')
+        return
+    size = int(winSize2.get())
+    noise_std = int(std.get())
+
 
 def process_image():
     global tabs, gray_img
@@ -341,6 +358,10 @@ def process_image():
         ace_filter()
     elif tabs.get() == 'Specified Equalization':
         specified_equalization()
+    elif tabs.get() == 'Blur Filter':
+        sudoMedian_filter()
+    elif tabs.get() == 'Denoise Filter':
+        MMSE_filter()
 
 
 
@@ -574,20 +595,24 @@ def populize_tab(tab, title):
         winSize1.grid(column=2, row=1, pady=10, padx=5)
 
     elif title == 'Denoise Filter':
-        global winSize1
+        global winSize2, std
 
         tab.columnconfigure((0,6), weight=1)
 
         create_graph(tab, col=1, row=0, img=gray_img)
         ctk.CTkLabel(tab, image=arrow, text='').grid(column=2, row=0, padx=25, pady=10)
-        create_graph(tab, col=3, row=0, txt='Blur Image Histogram')
+        create_graph(tab, col=3, row=0, txt='Denoised Image Histogram')
 
         fr = ctk.CTkFrame(tab)
         fr.grid(column=1, row=1, pady=5, padx=5, sticky='news', columnspan=3)
         fr.columnconfigure((0,3), weight=1)
 
-        winSize1 = ctk.CTkEntry(fr, width=105, placeholder_text='Window Size')
-        winSize1.grid(column=2, row=1, pady=10, padx=5)
+        winSize2 = ctk.CTkEntry(fr, width=105, placeholder_text='Window Size')
+        winSize2.grid(column=1, row=1, pady=10, padx=5)
+
+        std = ctk.CTkEntry(fr, width=105, placeholder_text='Noise STD')
+        std.grid(column=2, row=1, pady=10, padx=5)
+
 
 
 def upper_frame(img=False):
@@ -654,7 +679,7 @@ def basicLayout():
         negative   = tabs.add(' Image Negative')
         histogram  = tabs.add('Shrink & Stretch')
         non_linear = tabs.add('Non-Linear Mapping')
-        tabs.set('ACE Filter')
+        tabs.set('Blur Filter')
 
         # negative tab content
         populize_tab(negative, 'Image Negative')
