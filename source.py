@@ -362,7 +362,7 @@ def Blur_filter():
         return win
 
     height, width = gray_img.shape
-
+    size = size // 2
     for y in range(size, height - size):
         for x in range(size, width - size):
             
