@@ -558,7 +558,37 @@ def populize_tab(tab, title):
         create_graph(fr, 5, 0, txt='Processed Histogram')
     
     elif title == 'Blur Filter':
+        global winSize1
+
         tab.columnconfigure((0,6), weight=1)
+
+        create_graph(tab, col=1, row=0, img=gray_img)
+        ctk.CTkLabel(tab, image=arrow, text='').grid(column=2, row=0, padx=25, pady=10)
+        create_graph(tab, col=3, row=0, txt='Blur Image Histogram')
+
+        fr = ctk.CTkFrame(tab)
+        fr.grid(column=1, row=1, pady=5, padx=5, sticky='news', columnspan=3)
+        fr.columnconfigure((0,3), weight=1)
+
+        winSize1 = ctk.CTkEntry(fr, width=105, placeholder_text='Window Size')
+        winSize1.grid(column=2, row=1, pady=10, padx=5)
+
+    elif title == 'Denoise Filter':
+        global winSize1
+
+        tab.columnconfigure((0,6), weight=1)
+
+        create_graph(tab, col=1, row=0, img=gray_img)
+        ctk.CTkLabel(tab, image=arrow, text='').grid(column=2, row=0, padx=25, pady=10)
+        create_graph(tab, col=3, row=0, txt='Blur Image Histogram')
+
+        fr = ctk.CTkFrame(tab)
+        fr.grid(column=1, row=1, pady=5, padx=5, sticky='news', columnspan=3)
+        fr.columnconfigure((0,3), weight=1)
+
+        winSize1 = ctk.CTkEntry(fr, width=105, placeholder_text='Window Size')
+        winSize1.grid(column=2, row=1, pady=10, padx=5)
+
 
 def upper_frame(img=False):
     global app, r_imgFr, l_imgFr, image_size, arrow, upperFr, upload_btn, process_btn
