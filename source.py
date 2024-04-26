@@ -343,7 +343,19 @@ def Blur_filter():
 
     new_img = np.zeros_like(gray_img)
 
-    def pseudo_median_filter(window):
+    def pseudo_median_filter(s):
+        
+        def maximin(s, m):
+            return
+        
+        def minimax(s, m):
+            return
+        
+        s = s.flatten()
+        m = np.round((len(s)+1)/2).astype(int)
+
+        return maximin(s, m)//2 + minimax(s, m)//2
+        
         
         
 
