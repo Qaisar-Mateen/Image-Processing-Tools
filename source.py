@@ -267,9 +267,8 @@ def ace_filter():
     global gray_img, r_imgFr, k1_val, k2_val
     
     size = int(winSize.get())
-    padded_img = np.pad(gray_img, ((size//2, size//2), (size//2, size//2)), mode='edge')
     
-    img = np.float32(padded_img)
+    img = np.float32(gray_img)
 
     m = cv2.blur(img, (size, size)) # calculate local mean for each window
     std = cv2.blur((img - m)**2, (size, size))**0.5 # calculate local std for each window
@@ -372,6 +371,7 @@ def Blur_filter():
 
             new_img[y, x] = window
     
+    new_img = new_img[size//2:-size//2, size//2:-size//2]
     cv2.imwrite('blurred.png', new_img)
 
     pro_img = ctk.CTkImage(Image.open('blurred.png'), size=image_size)
@@ -395,9 +395,9 @@ def Denose_filter():
         return
 
     # padding the image
-    padded_img = gray_img#np.pad(gray_img, ((size//2, size//2), (size//2, size//2)), mode='edge')
+    padded_img = np.pad(gray_img, ((size//2, size//2), (size//2, size//2)), mode='edge')
 
-    new_img = np.copy(gray_img)
+    new_img = np.copy(padded_img)
 
     h, w = gray_img.shape
 
@@ -407,8 +407,11 @@ def Denose_filter():
             mean = np.mean(window.flatten())
             var = np.var(window.flatten())
             #print(new_img[y, x], window[size, size])
-            new_img[y, x] = (window[size, size] - (noise_variance/var)*(window[size, size] - mean)).astype('uint8')
+            print(noise_variance/var)
+            new_img[y, x] = (new_img[y, x] - (noise_variance/var)*(new_img[y, x] - mean)).astype('uint8')
 
+    # to remove added padding
+    new_img = new_img[size//2:-size//2, size//2:-size//2]
     cv2.imwrite('denois.png', new_img)
 
     pro_img = ctk.CTkImage(Image.open('denois.png'), size=image_size)
