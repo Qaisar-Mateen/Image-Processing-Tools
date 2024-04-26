@@ -267,7 +267,7 @@ def ace_filter():
     global gray_img, r_imgFr, k1_val, k2_val
     
     size = int(winSize.get())
-    padded_img = np.pad(gray_img, ((size, size), (size, size)), mode='edge')
+    padded_img = np.pad(gray_img, ((size//2, size//2), (size//2, size//2)), mode='edge')
     
     img = np.float32(padded_img)
     
@@ -390,7 +390,32 @@ def Denose_filter():
         messagebox.showerror('Invalid Input', 'Please enter valid input')
         return
     size = int(winSize2.get())
-    noise_std = int(std.get())
+    noise_std = float(std.get())
+
+    # padding the image
+    padded_img = np.pad(gray_img, ((size//2, size//2), (size//2, size//2)), mode='edge')
+
+    new_img = np.copy(gray_img)
+
+    h, w = gray_img.shape
+
+    for y in range(size, h - size):
+        for x in range(size, w - size):
+            window = padded_img[y - size:y + size + 1, x - size:x + size + 1]
+            mean = np.mean(window)
+            std = np.std(window)
+            new_img[y, x] = (window[y, x] - (noise_std * (window[y, x] - mean) / std)).astype('uint8')
+
+    cv2.imwrite('denois.png', new_img)
+
+    pro_img = ctk.CTkImage(Image.open('denois.png'), size=image_size)
+    for child in r_imgFr.winfo_children():
+        info = child.grid_info()
+        if info['row'] == 0:
+            child.destroy()
+    ctk.CTkLabel(r_imgFr, image=pro_img, text='').grid(column=0, row=0, padx=10,pady=10)
+    create_graph(tabs.tab('Denoise Filter'), 3, 0, img=new_img, txt='Denoised Image Histogram')
+
 
 
 def process_image():
