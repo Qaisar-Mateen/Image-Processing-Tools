@@ -346,7 +346,7 @@ def Blur_filter():
     def pseudo_median_filter(s):
         
         def maximin(s, m):
-            return
+            max([for ])
         
         def minimax(s, m):
             return
