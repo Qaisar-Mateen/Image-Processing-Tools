@@ -406,11 +406,11 @@ def Denose_filter():
             window = padded_img[y - size:y + size + 1, x - size:x + size + 1]
             mean = np.mean(window.flatten())
             var = np.var(window.flatten())
-            #print(new_img[y, x], window[size, size])
+
             print(noise_variance/var)
             new_img[y, x] = (new_img[y, x] - (noise_variance/var)*(new_img[y, x] - mean)).astype('uint8')
 
-    # to remove added padding
+    
     new_img = new_img[size//2:-size//2, size//2:-size//2]
     cv2.imwrite('denois.png', new_img)
 
