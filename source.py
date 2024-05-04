@@ -408,6 +408,10 @@ def Denose_filter():
 
     
     new_img = new_img[size//2:-size//2, size//2:-size//2]
+    
+    # cliping values back in range of 0 to 255
+    new_img = np.clip(new_img, 0, 255).astype('uint8')
+
     cv2.imwrite('denois.png', new_img)
 
     pro_img = ctk.CTkImage(Image.open('denois.png'), size=image_size)
