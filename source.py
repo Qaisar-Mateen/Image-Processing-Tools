@@ -403,7 +403,7 @@ def Denose_filter():
             mean = np.mean(window.flatten())
             var = np.var(window.flatten())
 
-            print(noise_variance/var)
+            #print(noise_variance/var)
             new_img[y, x] = (new_img[y, x] - (noise_variance/var)*(new_img[y, x] - mean)).astype('uint8')
 
     
